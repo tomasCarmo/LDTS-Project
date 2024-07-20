@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'groovy'
+    id 'info.solidsoft.pitest' version '1.6.0'
+}
+
+group 'donkeyKongGame'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.mockito:mockito-core:3.7.7'
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'
+
+    testImplementation 'org.mockito:mockito-core:3.7.7'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
+}
+
+pitest {
+    junit5PluginVersion = '0.15'
+    pitestVersion = '1.6.7'
+    verbose = true
+    excludedClasses = ['donkeyKongGame.Application']
+}
+
+mainClassName = 'donkeyKongGame.Application'
